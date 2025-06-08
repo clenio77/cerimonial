@@ -1,0 +1,4 @@
+# Execute estes comandos no terminal para criar as imagens
+mkdir -p public/images
+
+# Se você não conseguir usar curl, vamos modificar os componentes para lidar com imagens ausentes

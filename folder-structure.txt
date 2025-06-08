@@ -1,0 +1,33 @@
+wedding-planner-website/
+├── public/
+│   ├── images/
+│   │   ├── hero-wedding.jpg
+│   │   ├── full-planning.jpg
+│   │   ├── day-of.jpg
+│   │   ├── consulting.jpg
+│   │   ├── about-story.jpg
+│   │   ├── team-1.jpg
+│   │   ├── team-2.jpg
+│   │   ├── team-3.jpg
+│   │   ├── couple1.jpg
+│   │   ├── client2.jpg
+│   │   └── corporate.jpg
+│   └── icons/
+│       ├── planning.svg
+│       ├── day-of.svg
+│       └── consulting.svg
+├── src/
+│   ├── components/
+│   │   ├── Footer.js
+│   │   ├── Layout.js
+│   │   ├── Navbar.js
+│   │   └── TestimonialCard.js
+│   ├── pages/
+│   │   ├── _app.js
+│   │   ├── index.js
+│   │   ├── sobre.js
+│   │   ├── servicos.js
+│   │   └── contato.js
+│   └── styles/
+│       └── globals.css
+└── package.json
