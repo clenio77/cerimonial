@@ -3,8 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/sobre": "pages/sobre.js",
-  "/servicos": "pages/servicos.js",
   "/portfolio": "pages/portfolio.js",
-  "/contato": "pages/contato.js"
+  "/sobre": "pages/sobre.js",
+  "/servicos": "pages/servicos.js"
 }
