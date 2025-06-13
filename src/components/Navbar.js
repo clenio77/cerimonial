@@ -6,6 +6,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const { locale, asPath } = router;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,10 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const changeLocale = (newLocale) => {
+    router.push(asPath, asPath, { locale: newLocale });
+  };
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
@@ -58,6 +63,19 @@ const Navbar = () => {
               />
             </svg>
           </button>
+
+          {/* Seletor de idioma */}
+          <div className="flex items-center space-x-4">
+            <select
+              value={locale}
+              onChange={e => changeLocale(e.target.value)}
+              className="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none"
+              aria-label="Selecionar idioma"
+            >
+              <option value="pt-BR">PT</option>
+              <option value="en-US">EN</option>
+            </select>
+          </div>
         </div>
 
         {/* Mobile Menu */}

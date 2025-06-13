@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { FaCalendarAlt, FaUsers, FaMapMarkerAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import ImagePlaceholder from '../components/ImagePlaceholder';
+import Seo from '../components/Seo';
 
 export default function Portfolio() {
   const fadeInUp = {
@@ -157,140 +158,140 @@ export default function Portfolio() {
   };
 
   return (
-    <Layout>
-      <div className="pt-24 pb-16 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Portfólio de Eventos</h1>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">
-              Conheça alguns dos eventos que tive o prazer de organizar e fazer parte
-            </p>
-          </motion.div>
-        </div>
-      </div>
-
-      <div className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          {/* Filter Categories - com efeito de flutuação */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                  activeCategory === category
-                    ? "bg-blue-600 text-white shadow-md"
-                    : "bg-white text-gray-700 hover:bg-blue-50"
-                }`}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -3,
-                  boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {category}
-              </motion.button>
-            ))}
+    <>
+      <Seo title="Portfólio - Helton Oliveira" description="Veja alguns dos eventos realizados por Helton Oliveira, cerimonialista e produtor de eventos." />
+      <Layout>
+        <div className="pt-24 pb-16 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
+            >
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Portfólio de Eventos</h1>
+              <p className="text-xl text-blue-200 max-w-3xl mx-auto">
+                Conheça alguns dos eventos que tive o prazer de organizar e fazer parte
+              </p>
+            </motion.div>
           </div>
+        </div>
 
-          {/* Portfolio Grid - com efeito 3D nos cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                variants={fadeInUp}
-                className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300"
-                style={{
-                  perspective: 1000,
-                  transformStyle: "preserve-3d",
-                  rotateX: cardMotionValues[index].rotateX,
-                  rotateY: cardMotionValues[index].rotateY
-                }}
-                onMouseMove={(e) => handleMouseMove(e, index)}
-                onMouseEnter={() => setHoveredCard(index)}
-                onMouseLeave={() => handleMouseLeave(index)}
-                whileHover={{
-                  z: 20,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                }}
-              >
-                <motion.div 
-                  className="h-64 relative"
-                  style={{ transformStyle: "preserve-3d" }}
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+        <div className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            {/* Filter Categories - com efeito de flutuação */}
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              {categories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-6 py-2 rounded-full transition-all duration-300 ${
+                    activeCategory === category
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-white text-gray-700 hover:bg-blue-50"
+                  }`}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -3,
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Portfolio Grid - com efeito 3D nos cards */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredItems.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  variants={fadeInUp}
+                  className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300"
+                  style={{
+                    perspective: 1000,
+                    transformStyle: "preserve-3d",
+                    rotateX: cardMotionValues[index].rotateX,
+                    rotateY: cardMotionValues[index].rotateY
+                  }}
                   onMouseMove={(e) => handleMouseMove(e, index)}
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => handleMouseLeave(index)}
+                  whileHover={{
+                    z: 20,
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                  }}
                 >
-                  {/* Usando a tag img padrão em vez do componente Image do Next.js */}
-                  <img 
-                    src={item.imageUrl || "/images/executiva.jpg"} 
-                    alt={item.title} 
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
-                    <span className="text-white font-medium p-4">{item.category}</span>
-                  </div>
+                  <motion.div 
+                    className="h-64 relative"
+                    style={{ transformStyle: "preserve-3d" }}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    onMouseMove={(e) => handleMouseMove(e, index)}
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => handleMouseLeave(index)}
+                  >
+                    <Image
+                      src={item.imageUrl || "/images/executiva.jpg"}
+                      alt={item.title}
+                      fill
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </motion.div>
+                  <motion.div 
+                    className="p-6"
+                    style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }}
+                  >
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-gray-600 mb-4">{item.description}</p>
+                    <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                      <div className="flex items-center">
+                        <FaCalendarAlt className="mr-2 text-blue-500" />
+                        {item.date}
+                      </div>
+                      <div className="flex items-center">
+                        <FaUsers className="mr-2 text-blue-500" />
+                        {item.guests} convidados
+                      </div>
+                      <div className="flex items-center">
+                        <FaMapMarkerAlt className="mr-2 text-blue-500" />
+                        {item.location}
+                      </div>
+                    </div>
+                  </motion.div>
                 </motion.div>
-                <motion.div 
-                  className="p-6"
-                  style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }}
-                >
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-600 mb-4">{item.description}</p>
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <FaCalendarAlt className="mr-2 text-blue-500" />
-                      {item.date}
-                    </div>
-                    <div className="flex items-center">
-                      <FaUsers className="mr-2 text-blue-500" />
-                      {item.guests} convidados
-                    </div>
-                    <div className="flex items-center">
-                      <FaMapMarkerAlt className="mr-2 text-blue-500" />
-                      {item.location}
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Call to Action - com efeito de flutuação */}
-      <div className="py-16 bg-blue-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Vamos criar seu evento inesquecível?</h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Entre em contato para uma consulta personalizada e descubra como posso ajudar a transformar seu evento em uma experiência única.
-          </p>
-          <motion.a
-            href="/contato"
-            whileHover={{ 
-              scale: 1.05,
-              y: -5,
-              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition shadow-lg"
-          >
-            Agendar Consulta
-          </motion.a>
+        {/* Call to Action - com efeito de flutuação */}
+        <div className="py-16 bg-blue-50">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-6">Vamos criar seu evento inesquecível?</h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              Entre em contato para uma consulta personalizada e descubra como posso ajudar a transformar seu evento em uma experiência única.
+            </p>
+            <motion.a
+              href="/contato"
+              whileHover={{ 
+                scale: 1.05,
+                y: -5,
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition shadow-lg"
+            >
+              Agendar Consulta
+            </motion.a>
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 }
